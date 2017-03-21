@@ -7,6 +7,7 @@ using Rage;
 using LSPD_First_Response.Mod.API;
 using LSPD_First_Response.Mod.Callouts;
 using LSPD_First_Response.Engine.Scripting.Entities;
+using BetterEMS.API;
 
 namespace RapidResponseAmbulance.Callouts {
     //Very High for Testing purposes
@@ -47,6 +48,16 @@ namespace RapidResponseAmbulance.Callouts {
 
             if(!hearthAttackCreated && Game.LocalPlayer.Character.DistanceTo(hearthAttackPed.Position) < 30f) {
                 hearthAttackCreated = true;
+
+                GameFiber.StartNew(delegate {
+                    while(true) {
+                        GameFiber.Yield();
+
+                        if(EMSFunctions.DidEMSRevivePed(hearthAttackPed) != null) {
+                            break;
+                        }
+                    }
+                });
             }
 
             if(hearthAttackCreated)

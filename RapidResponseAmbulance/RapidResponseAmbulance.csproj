@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BetterEMS">
+      <HintPath>..\..\..\Documents\GTA Mods\dll's\BetterEMS.dll</HintPath>
+    </Reference>
     <Reference Include="LSPD First Response">
       <HintPath>..\..\..\Documents\GTA Mods\dll's\LSPD First Response.dll</HintPath>
     </Reference>
