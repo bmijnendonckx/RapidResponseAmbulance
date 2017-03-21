@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Rage;
 using LSPD_First_Response.Mod.API;
 
-
 namespace RapidResponseAmbulance
 {
     public class Main:Plugin {
@@ -17,7 +16,7 @@ namespace RapidResponseAmbulance
         public override void Initialize() {
             Functions.OnOnDutyStateChanged += OnOnDutyStateChangedHandler;
 
-            Game.LogTrivial("Plugin Rapig Response Ambulance " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + " has been initialised.");
+            Game.LogTrivial("Plugin Rapig Response Ambulance has been initialised.");
         }
 
         private static void OnOnDutyStateChangedHandler(bool onDuty) {
@@ -26,7 +25,7 @@ namespace RapidResponseAmbulance
         }
 
         private static void RegisterCallouts() {
-
+            Functions.RegisterCallout(typeof(Callouts.HearthAttack));
         }
     }
 }
